@@ -30,7 +30,7 @@ This repository includes information, code, scripts, and data to generate the fi
 * 
 
 ### Data Generation
-The main files to perform the algorithm detailed in the paper are described below. Generated data can be found in the **results** folder. The following files were designed to be ran on a computing cluster, and they may need to be modified to run on other systems. Used libraries include matplotlib, numpy, scipy, csv and time.
+The main files to perform the algorithm detailed in the paper are described below. Generated data can be found in the **results** folder. The following files were designed to be ran on a computing cluster, and they may need to be modified to run on other systems.
 
 ### Figures
-All the codes used to create the figures in the paper are found in the **figures_scripts** folder. They are all written in Python (as jupyter notebooks and also as pure python code).
+All the codes used to create the figures in the paper are found in the **figures_scripts** folder. They are all written in Python (as jupyter notebooks and also as pure python code). Used libraries include matplotlib, numpy, scipy, csv and time.
