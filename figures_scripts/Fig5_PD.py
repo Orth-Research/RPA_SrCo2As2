@@ -1,16 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[24]:
+# In[76]:
 
 
 import numpy as np
-#from numpy.ma import masked_array
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.colorbar as cb
-#from numpy import ma
-#from matplotlib import ticker, cm
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 import csv
 
