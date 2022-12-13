@@ -1,18 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[350]:
-
-
 import numpy as np
 import scipy.linalg as la
 import matplotlib.pyplot as plt
 import time
 import matplotlib.cm as cm
-
-
-# In[372]:
-
 
 #physical susceptibility
 def physical_susc(U, JUratio,suscall):
@@ -96,15 +89,7 @@ def physical_susc(U, JUratio,suscall):
     #print(np.max(np.real(susc_phys_component)))
     return susc_phys
 
-
-# In[1]:
-
-
 my_path = f"C:/Users/amnedic/Documents/GitHub/RPA_SrCo2As2/results/MG+GXP+PNG_PD_13.40_to_12.00/"
-
-
-# In[354]:
-
 
 #Gamma
 
@@ -181,15 +166,7 @@ plt.show()
 #fig.savefig('G1.pdf', bbox_inches='tight', dpi=2000)
 #fig.savefig('Gamma_x_'+str(x)+'_JUratio_'+str(JUratio)+'.pdf', bbox_inches='tight', dpi=2000)
 
-
-# In[348]:
-
-
 #fig.savefig('Orb_content/Gamma_x='+str(np.round(fil-13,2))+'_JUratio='+str(JUratio)+'_U='+str(perc)+'Uc.pdf', bbox_inches='tight', dpi=2000)
-
-
-# In[329]:
-
 
 #M
 # fil=12.6
@@ -244,17 +221,9 @@ plt.show()
 #fig.savefig('M_x_'+str(x)+'_JUratio_'+str(JUratio)+'.pdf', bbox_inches='tight', dpi=2000)
 #fig.savefig('M1.pdf', bbox_inches='tight', dpi=2000)
 
-
-# In[330]:
-
-
 arr=np.array(full/np.amax(full))
 np.savetxt('Orb_content/M_x='+str(np.round(fil-13,2))+'_JUratio='+str(JUratio)+'_U='+str(perc)+'Uc.csv', arr,  delimiter = ",")
 fig.savefig('Orb_content/M_x='+str(np.round(fil-13,2))+'_JUratio='+str(JUratio)+'_U='+str(perc)+'Uc.pdf', bbox_inches='tight', dpi=2000)
-
-
-# In[316]:
-
 
 #X=30
 # fil=12.78
@@ -315,17 +284,9 @@ plt.show()
 #fig.savefig('X_x_'+str(x)+'_JUratio_'+str(JUratio)+'.pdf', bbox_inches='tight', dpi=2000)
 #ig.savefig('X1.pdf', bbox_inches='tight', dpi=2000)
 
-
-# In[174]:
-
-
 arr=np.array(full/np.amax(full))
 #np.savetxt('Orb_content/X_x='+str(np.round(fil-13,2))+'_JUratio='+str(JUratio)+'_U='+str(perc)+'Uc.csv', arr,  delimiter = ",")
 #fig.savefig('Orb_content/X_x='+str(np.round(fil-13,2))+'_JUratio='+str(JUratio)+'_U='+str(perc)+'Uc.pdf', bbox_inches='tight', dpi=2000)
-
-
-# In[331]:
-
 
 #P=40
 # fil=12.6
@@ -385,10 +346,6 @@ cbar.solids.set_edgecolor("face")
 plt.show()
 #fig.savefig('P_x_'+str(x)+'_JUratio_'+str(JUratio)+'.pdf', bbox_inches='tight', dpi=2000)
 #fig.savefig('P1.pdf', bbox_inches='tight', dpi=2000)
-
-
-# In[332]:
-
 
 arr=np.array(full/np.amax(full))
 #np.savetxt('Orb_content/P_x='+str(np.round(fil-13,2))+'_JUratio='+str(JUratio)+'_U='+str(perc)+'Uc.csv', arr,  delimiter = ",")

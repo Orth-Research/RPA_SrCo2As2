@@ -1,19 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import numpy as np
 import scipy.linalg as la
 import matplotlib.pyplot as plt
 import time
 from matplotlib import cm
 from collections import OrderedDict
-
-
-# In[2]:
-
 
 #physical susceptibility
 def inv_physical_susc(U, JUratio, qnt):
@@ -93,27 +86,12 @@ def inv_physical_susc(U, JUratio, qnt):
     susc_phys=0.5*np.real(np.sum(susc_phys_component))
     return susc_phys
 
-#     eigenValues = la.eigh(inver)[0] #selecting eigenvalues only
-#     eigenValues = np.real(eigenValues)
-#     inveigenValues = 1/eigenValues
-#     idx = inveigenValues.argsort() #sorting eigenvalues
-#     inveigenValues = inveigenValues[idx]
-#     return 1/abs(inveigenValues[0])
-
-
-# In[3]:
-
-
 def smallfunc(U, JUratio):
     phys = []
     for qnt in range(51):
         susc_p = inv_physical_susc(U,JUratio,qnt)
         phys.append(susc_p)
     return phys
-
-
-# In[ ]:
-
 
 #physical
 susc_phys_all = []
@@ -170,25 +148,13 @@ for c in range(q_tot):
     susc_phys_all.append(phys)
     print('cut = ', cut, ', progres:', round(len(susc_phys_all)/20*100, 3), '%')
 
-
-# In[82]:
-
-
 N=21
 fig, ax = plt.subplots()
 c=ax.imshow(np.log10(np.real(susc_phys_all)), interpolation=None, cmap=plt.get_cmap('inferno_r'))
 fig.colorbar(c)
 plt.show()
 
-
-# In[83]:
-
-
 print(np.shape(susc_phys_all))
-
-
-# In[91]:
-
 
 #full BZ inlcuding the edges
 
@@ -234,10 +200,6 @@ c.set_clim(minval, maxval)
 plt.show()
 print('kz=', kz, 'J/U=', JUratio, 'U=', U)
 
-
-# In[ ]:
-
-
 #ln
 #full BZ inlcuding the edges
 
@@ -262,10 +224,6 @@ c.set_clim(minval, maxval)
 
 plt.show()
 print('kz=', kz, 'J/U=', JUratio, 'U=', U)
-
-
-# In[179]:
-
 
 #bz.savefig('2Dcut_fil='+str(fil)+'_z='+str(kz)+'_'+str(UoverUc)+'Uc_JUratio='+str(JUratio)+'.pdf', bbox_inches='tight', dpi=2000)
 

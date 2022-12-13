@@ -1,22 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
-
-# In[8]:
-
-
 path = "C:/Users/amnedic/Documents/GitHub/RPA_SrCo2As2/results/"
-
-
-# In[9]:
-
 
 fill_mu = np.transpose(np.genfromtxt(path+'filling_chemicalpotential.dat'))
 fill_mu_T = np.transpose(np.genfromtxt(path+'filling_chemicalpotential_T.dat'))
@@ -50,15 +39,5 @@ plt.xlabel('$x$',fontsize=14)
 plt.ylabel('$\mu - \mu_F(T=0)$ [eV]',fontsize=14)
 plt.show()
 
-
-# In[10]:
-
-
 #fig1.savefig("filling_chemicalpotential.png", format='png', dpi = 600, bbox_inches="tight")
-
-
-# In[ ]:
-
-
-
 

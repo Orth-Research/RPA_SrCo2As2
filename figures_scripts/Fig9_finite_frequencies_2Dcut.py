@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 import numpy as np
 import scipy.linalg as la
 import matplotlib.pyplot as plt
@@ -12,10 +9,6 @@ from matplotlib import cm
 from collections import OrderedDict
 from __future__ import print_function
 from scipy.optimize import curve_fit
-
-
-# In[3]:
-
 
 #a function to calculate physical from bare susceptibility (including interactions and summing over abba components) 
 def inv_physical_susc(U, JUratio, qnt):
@@ -94,10 +87,6 @@ def inv_physical_susc(U, JUratio, qnt):
             susc_phys_component.append(inver[k][i])
     susc_phys=0.5*np.imag(np.sum(susc_phys_component))
     return susc_phys
-
-
-# In[4]:
-
 
 #physical susceptibility for different doping and interaction ratios
 susc_phys_all = []
@@ -181,19 +170,11 @@ for c in range(q_tot):
     susc_phys_all.append(phys)
     print('cut = ', cut, ', progres:', round(len(susc_phys_all)/40*100, 3), '%')
 
-
-# In[6]:
-
-
 N=41
 fig, ax = plt.subplots()
 c=ax.imshow(susc_phys_all, interpolation=None, cmap=plt.get_cmap('inferno'))
 fig.colorbar(c)
 plt.show()
-
-
-# In[7]:
-
 
 #full BZ inlcuding the edges
 
@@ -236,35 +217,19 @@ c.set_clim(minval, maxval)
 plt.show()
 print('kz =', kz, ', U/Uc =', UoverUc)
 
-
-# In[18]:
-
-
 #bz.savefig('2Dcut_final_fil='+str(fil)+'_omega='+str(omega)+'_z='+str(kz)+'_Uc='+str(UoverUc)+'_JUratio='+str(JUratio)+'_UoverUc='+str(UoverUc)+'.png', bbox_inches='tight', dpi=2000)
-
-
-# In[19]:
-
 
 import csv
 with open('2Dcut_fil='+str(fil)+'_omega='+str(omega)+'_z='+str(kz)+'_Uc='+str(UoverUc)+'_JUratio='+str(JUratio)+'_UoverUc='+str(UoverUc)+'.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerows(np.array(newlistfull))
 
-
-# ### Gaussian fitting
-
-# In[448]:
-
+#Gaussian fitting
 
 cf=20
 xcut = (1/80)*np.linspace(0,40, num=41)+0.25
 GXG = newlistfull[40][cf:-cf]
 MXM = np.transpose(newlistfull)[40][cf:-cf]
-
-
-# In[487]:
-
 
 xData1 = xcut
 yData1 = MXM
@@ -274,10 +239,6 @@ ax.plot(xData, yData1, marker = 'o', markersize = 3, linestyle = '-', linewidth 
 plt.legend([r'cut $MXM$', r'multiple Lorentzian fit'])
 
 plt.show()
-
-
-# In[505]:
-
 
 n0=6
 xData0 = xcut
@@ -307,10 +268,6 @@ plt.plot(xrange, Gaussyrange, '-', label='fit', c='k')
 plt.legend()
 plt.show()
 
-
-# In[506]:
-
-
 lcutfit = plt.figure()
 ax = lcutfit.add_subplot( 1, 1, 1 )
 ax.plot(xData0, yData0, marker = 'o', markersize = 3, linestyle = '-', linewidth = 1.,  color = 'darkorange')
@@ -329,10 +286,6 @@ print(r1)
 plt.show()
 #lcutfit.savefig('lcutMXM_0.05-X_fil='+str(fil)+'_omega='+str(omega)+'_z='+str(kz)+'_Uc='+str(UoverUc)+'_JUratio='+str(JUratio)+'_UoverUc='+str(UoverUc)+'.png', bbox_inches='tight', dpi=2000)
 
-
-# In[507]:
-
-
 xData01 = xData0
 yData01 = yData0
 xrange1 = xrange
@@ -340,10 +293,6 @@ Gaussyrange1 = Gaussyrange
 hM1 = hM
 xM1 = xM
 y01 = y0
-
-
-# In[508]:
-
 
 xData = xcut
 yData1 = GXG
@@ -353,10 +302,6 @@ ax.plot( xData, yData, marker = 'o', markersize = 3, linestyle = '-', linewidth 
 plt.legend([r'cut $\Gamma$X$\Gamma$', r'multiple Lorentzian fit'])
 
 plt.show()
-
-
-# In[532]:
-
 
 xData0 = xcut
 yData0 = GXG
@@ -383,16 +328,6 @@ plt.plot(xrange, Gaussyrange, '-', label='fit', c='k')
 #plt.plot(xrange, Gauss(xrange, fit_A, fit_B, fit_y0), '-', label='fit')
 plt.legend()
 plt.show()
-
-
-# In[ ]:
-
-
-
-
-
-# In[533]:
-
 
 lcutfit = plt.figure()
 ax = lcutfit.add_subplot( 1, 1, 1 )
@@ -434,10 +369,6 @@ print(r2)
 # plt.show()
 # #lcutfit.savefig('lcutMXM_0.05-X_fil='+str(fil)+'_omega='+str(omega)+'_z='+str(kz)+'_Uc='+str(UoverUc)+'_JUratio='+str(JUratio)+'_UoverUc='+str(UoverUc)+'.png', bbox_inches='tight', dpi=2000)
 
-
-# In[534]:
-
-
 xData02 = xData0
 yData02 = yData0
 xrange2 = xrange
@@ -446,25 +377,13 @@ hM2 = hM
 xM2 = xM
 y02 = fit_y0
 
-
-# In[535]:
-
-
 Gaussyrange = Gauss1(xrange2, fit_A1, fit_B1)
-
-
-# $\eta = \frac{r^2-1}{r^2+1}$
-
-# In[536]:
 
 
 r=r1/r2
 print(r)
 eta=(r**2-1)/(r**2+1)
 print(eta)
-
-
-# In[537]:
 
 
 comb = plt.figure(1, figsize = [6,2])

@@ -1,19 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 import numpy as np
 import scipy.linalg as la
 import matplotlib.pyplot as plt
 import time
 from matplotlib import cm
 from collections import OrderedDict
-
-
-# In[5]:
-
 
 #physical line cut
 susc_phys_all = []
@@ -41,10 +34,6 @@ for q in range(11):
 print(np.shape(suscall))
 
 suscall = np.real(suscall)
-
-
-# In[8]:
-
 
 #physical susceptibility
 def inv_physical_susc(U, JUratio, qnt):
@@ -124,20 +113,12 @@ def inv_physical_susc(U, JUratio, qnt):
     susc_phys=0.5*np.real(np.sum(susc_phys_component))
     return 1/susc_phys
 
-
-# In[9]:
-
-
 def smallfunc(U, JUratio):
     phys = []
     for qnt in range(51):
         susc_p = inv_physical_susc(U,JUratio,qnt)
         phys.append(susc_p)
     return phys
-
-
-# In[36]:
-
 
 # #13.00
 # phys_U05_0995 = smallfunc(1.415349752*0.995, 0.5)
@@ -151,10 +132,6 @@ phys_U025_05 = smallfunc(2.94017731*0.7, 0.25)
 phys_U0_05 =  smallfunc(3.158537376*0.7, 0)
 phys_U025_0995 = smallfunc(2.94017731*0.995, 0.25)
 phys_U0_0995 =  smallfunc(3.158537376*0.995, 0)
-
-
-# In[61]:
-
 
 width = 1.5*3.375
 height = width/1.618
@@ -178,37 +155,9 @@ plt.axvline(x=50, color='gray', linestyle=':', markersize=0.01)
 plt.axhline(y=0, color='gray', linestyle='--', markersize=0.01)
 plt.plot(phys_U0_0995, 'o', color=rgba_blue, ls='-', markersize=4)
 plt.plot(phys_U025_0995, 'o', color=rgba_brown, ls='-', markersize=4)
-#plt.plot(phys_U0_05, 'o', color=rgba_blue, ls='-', markersize=2)
-#plt.plot(phys_U025_05, 'o', color=rgba_brown, ls='-', markersize=2)
-#plt.plot(phys_U025_0995, 'o', color=rgba_brown, ls='-', markersize=4)
 plt.plot(phys_bare, 'o', color='k', ls='-', markersize=4)
-#plt.plot(phys_U01_0995, 'o', color='purple', ls='-', markersize=4)
-#plt.plot(phys_bare, 'o', color='red', ls='-', markersize=2)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.show()
 
-
-# In[62]:
-
-
 #fig.savefig('inv2_12.78.pdf', bbox_inches='tight', dpi=2000)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-

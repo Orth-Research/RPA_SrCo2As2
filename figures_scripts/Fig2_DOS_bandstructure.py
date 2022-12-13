@@ -1,21 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import numpy as np
-import scipy.linalg as la
+import scipy.linalg as l1a
 import matplotlib.pyplot as plt
 import time
-from matplotlib.colors import LinearSegmentedColormap
-import  matplotlib.colors
 
 orb = 16 #number of bands/orbitals
-
-
-# In[2]:
-
 
 #Importing Wannier90 Hamiltonian
 
@@ -39,10 +30,6 @@ weights_data = np.genfromtxt(path+'nrpts_wannier90_hr-SrCo2As2.dat', delimiter='
 weights_data_str = [str(t).split() for t in weights_data] 
 c_weights_list = [1/int(item) for sublist in weights_data_str for item in sublist]  #c_weights_list is a flat list containing 1/weights
 w = len(c_weights_list)
-
-
-# In[3]:
-
 
 #Energy eigenvalues and eigenvectors
 
@@ -69,9 +56,6 @@ def energy(k_biglist):
     return (eiglist, eigvectors)
 
 
-# In[4]:
-
-
 #k_biglist - simple
 
 #N gives discretization for each of kx, ky, kz directions
@@ -95,15 +79,9 @@ for t in range(N):
     k_biglist.append([k_val[t], k_val[t], -k_val[t]])
 
 
-# In[5]:
-
-
 start_time = time.time();
 energylist = energy(k_biglist)
 print(round((time.time()-start_time)/60, 3), 'minutes for calculation.');
-
-
-# In[6]:
 
 
 #enenergies are 0th output of our function
@@ -115,10 +93,6 @@ for E in ener:
     ener_mu.append(E)
 #eigenvectors are 1th output of our function
 ener_v = energylist[1]
-
-
-# In[7]:
-
 
 #z^2, xz, yz, x^2-y^2, xy
 orb_z2 = []
@@ -167,10 +141,6 @@ for i in range(len(ener_v)):
             orb_y.append(ener_mu[i][p])
             x_y.append(i)
 
-
-# In[8]:
-
-
 dosf1 = plt.figure()
 plt.hlines(y=0., xmin=0.0, xmax=10000, color='gray', linestyle='dashed', alpha=1)
 plt.axvline(x=0, color='gray', linestyle=':', markersize=0.01)
@@ -190,22 +160,6 @@ plt.plot(x_xy, orb_xy, 'o', color='blue', markersize=1)
 plt.yticks(fontsize=12)
 plt.show()
 
-
-# In[9]:
-
-
-#dosf1.savefig('bandstructure.pdf', bbox_inches='tight',dpi=2000)
-
-
-# In[ ]:
-
-
-
-
-
-# In[4]:
-
-
 #k_biglist - simple
 
 #N gives discretization for each of kx, ky, kz directions
@@ -220,10 +174,6 @@ for a in range(N):
     for b in range(N):
         for c in range(N):
             k_biglist.append([k_val[a], k_val[b], k_val[c]])
-
-
-# In[5]:
-
 
 #definition of function for susceptibility to calculate the energies for a given list of k-values
 
@@ -251,26 +201,14 @@ def energy(k_biglist):
         
     return (eiglist, eigvectors)
 
-
-# In[7]:
-
-
 start_time = time.time();
 energylist = energy(k_biglist)
 print(round((time.time()-start_time)/60, 3), 'minutes for calculation.');
-
-
-# In[ ]:
-
 
 #eigenenergies are 0th output of our function
 ener = np.real(energylist[0])
 #eigenvectors are 1th output of our function
 ener_v = energylist[1]
-
-
-# In[10]:
-
 
 ener1 = np.array(ener)-6.2693
 ener1 = [item for sublist in ener1 for item in sublist]
@@ -291,17 +229,9 @@ plt.plot(x, y, 'gray')
 plt.axvline(x=0, color='gray', linestyle='dashed')
 plt.show()
 
-
-# In[11]:
-
-
 #summing all states up to Fermi level and later normalizing to the filling of 13
 print(x[333],x[334])
 ys = sum(y[0:334])
-
-
-# In[12]:
-
 
 #z^2, xz, yz, x^2-y^2, xy
 orb_z2 = []
@@ -382,9 +312,6 @@ for t in range(num+1):
     y_xy.append((1/np.pi)*dos5/num)
 
 
-# In[14]:
-
-
 #all Co orbitals
 orb_Co = []
 list_Co = [0,1,2,3,4,5,6,7,8,9]
@@ -407,10 +334,6 @@ for t in range(num+1):
     dos_sublist = (delta/((omega-ener1)**2 + delta**2))*orb_Co
     dos=np.sum(dos_sublist)
     y_Co.append((1/np.pi)*dos/num)
-
-
-# In[13]:
-
 
 #all As orbitals
 orb_As = []
@@ -435,10 +358,6 @@ for t in range(num+1):
     dos=np.sum(dos_sublist)
     y_As.append((1/np.pi)*dos/num)
 
-
-# In[27]:
-
-
 #total, Co and As
 plt.plot(x, np.real(y_As/ys)*13/delta, 'orangered')
 plt.plot(x, np.real(y_Co/ys)*13/delta, 'purple', markersize=1)
@@ -454,15 +373,6 @@ plt.axvline(x=0, color='lightgray', linestyle='--', markersize=0.01)
 plt.show()
 
 
-# In[ ]:
-
-
-
-
-
-# In[116]:
-
-
 ind=333
 print('x=',x[ind])
 print('DoS', y[ind]/ys*13)
@@ -473,21 +383,12 @@ print(np.real(y_z2[ind]/y_xy[ind]))
 print(np.real(y_xy[ind]/y_xy[ind]))
 
 
-# In[169]:
-
-
 #All
 dosf = plt.figure()
 plt.axvline(x=0, color='gray', linestyle='--', markersize=0.01)
 plt.plot(x, y/ys*13, 'k')
 plt.plot(x, y_As/ys*13, 'orange')
 plt.plot(x, y_Co/ys*13, 'purple')
-
-# plt.plot(x, y_x2y2/ys*13, 'dodgerblue')
-# plt.plot(x, y_yz/ys*13, 'darkred')
-# plt.plot(x, y_xz/ys*13, 'darkred')
-# plt.plot(x, y_z2/ys*13, 'green')
-# plt.plot(x, y_xy/ys*13, 'blue')
 
 plt.plot(x, y_x2y2/ys*13, 'olive')
 plt.plot(x, y_yz/ys*13, 'dodgerblue')
@@ -505,14 +406,4 @@ plt.yticks(fontsize=12)
 plt.show()
 
 
-# In[170]:
-
-
 dosf.savefig('dos_sym_full_v4.pdf', bbox_inches='tight',dpi=2000)
-
-
-# In[ ]:
-
-
-
-

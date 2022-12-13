@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[12]:
-
-
 import numpy as np
 import scipy.linalg as la
 import matplotlib.pyplot as plt
@@ -12,10 +9,6 @@ from matplotlib.colors import LinearSegmentedColormap
 import  matplotlib.colors
 
 orb = 16 #number of bands/orbitals
-
-
-# In[4]:
-
 
 #Importing Wannier90 Hamiltonian
 
@@ -39,10 +32,6 @@ weights_data = np.genfromtxt(path+'nrpts_wannier90_hr-SrCo2As2.dat', delimiter='
 weights_data_str = [str(t).split() for t in weights_data] 
 c_weights_list = [1/int(item) for sublist in weights_data_str for item in sublist]  #c_weights_list is a flat list containing 1/weights
 w = len(c_weights_list)
-
-
-# In[5]:
-
 
 #Energy eigenvalues and eigenvectors
 
@@ -68,10 +57,6 @@ def energy(k_biglist):
         
     return (eiglist, eigvectors)
 
-
-# In[6]:
-
-
 #Fermi surface - k-points sampling
 
 N=200 #k-space discretization NxN
@@ -86,10 +71,6 @@ for t2 in range(N+1):
         kxyz_list.append(knum)
         kprim = [np.pi*(knum[1]+knum[2]-knum[0]), np.pi*(knum[0]+knum[2]-knum[1]), np.pi*(knum[0]+knum[1]-knum[2])] #primitive coordinate
         klist_2D1.append(kprim)
-
-
-# In[7]:
-
 
 #Fermi surface for a given value of electron filling x
 
@@ -111,10 +92,6 @@ xs=-0.3
 for E in ener:
     E = E-mu
     ener_mu.append(E)
-
-
-# In[8]:
-
 
 #Fermi surface - plotting
 
@@ -142,16 +119,6 @@ FS=ax.scatter(x, y, c=z, cmap='Greys', s=10)
 fig.colorbar(FS, label='# of states for $\mu=$'+str(xs)+'$\pm$'+str(window)+'eV')
 #fig.savefig('FS_x='+str(xs)+'_kz='+str(kz)+'_window='+str(window)+'eV.png', dpi=200)
 plt.show()
-
-
-# In[ ]:
-
-
-
-
-
-# In[33]:
-
 
 #Orbitally-resolved Fermi surface (all d+p orbitals)
 
@@ -212,16 +179,6 @@ cbar.ax.set_yticklabels(['$d_{z^2}$','$d_{xz}$','$d_{yz}$','$d_{x^2-y^2}$','$d_{
 #fig.savefig('FS_all_x='+str(xs)+'_kz='+str(kz)+'_window='+str(window)+'eV.png', dpi=200)
 plt.show()
 
-
-# In[ ]:
-
-
-
-
-
-# In[39]:
-
-
 #Orbitally-resolved Fermi surface (d orbitals only)
 
 ener_v = energylist[1]
@@ -270,16 +227,3 @@ cbar = fig.colorbar(FS, ticks=[1.4,2.2,3,3.8,4.6])
 cbar.ax.set_yticklabels(['$d_{z^2}$','$d_{xz}$','$d_{yz}$','$d_{x^2-y^2}$','$d_{xy}$','$p_{z}$','$p_{x}$','$p_{y}$'], fontsize='12')  # vertically oriented colorbar
 #fig.savefig('FS_d_x='+str(xs)+'_kz='+str(kz)+'_window='+str(window)+'eV.png', dpi=200)
 plt.show()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-

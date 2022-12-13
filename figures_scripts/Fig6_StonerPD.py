@@ -1,24 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 import csv
 
-
-# In[2]:
-
-
 path = "C:/Users/amnedic/Documents/GitHub/RPA_SrCo2As2/results/"
-
-
-# In[3]:
-
 
 width = 1.5*3.375
 height = width/1.618
@@ -28,10 +17,6 @@ y_min = -0.4
 y_max = 0.4000000000001
 deltax = 0.01
 deltay = 0.1
-
-
-# In[4]:
-
 
 #Phase diagram - y-axis mu(T)
 table=csv.reader(open(path+'Phases_numba_phasediagram_A_JUpoints=50_MGXPNG_N=25.csv','r'))
@@ -66,10 +51,6 @@ for i in range(len(n)):
         xyz_list.append([n1[i][j],ylist[i],n[i][j]])
 xyz_array=np.array(xyz_list)
 
-
-# In[5]:
-
-
 # Ucr for entire phase diagram
 Ucr1=[]
 with open(path+'Ucr_numba_phasediagram_A_JUpoints=50_MGXPNG_N=25.csv', 'r') as file:
@@ -87,10 +68,6 @@ list_Ucr_01 =Ucrtransp[int(0.1*49/0.5)] #J/Uc=0.1
 list_Ucr_025 =Ucrtransp[int(0.25*49/0.5)] #J/Uc=0.25
 list_Ucr_04 = Ucrtransp[int(0.4*49/0.5)] #J/Uc=0.4
 list_mu=ylist
-
-
-# In[6]:
-
 
 fig = plt.figure(1, figsize = [width,height])
 ax = fig.add_subplot(111)
@@ -111,10 +88,6 @@ plt.scatter(list_Ucr_04*0.4, list_mu,  color='magenta', linestyle='-', s=8)
 plt.plot(list_Ucr_04*0.4, list_mu, color='magenta', ls='-')
 
 plt.show()
-
-
-# In[7]:
-
 
 width = 1.5*3.375
 height = width/1.618
@@ -137,10 +110,3 @@ plt.plot(list_mu, list_Ucr_04, 'o', color='magenta', markersize=4, linestyle='-'
 ax.xaxis.set_minor_locator(AutoMinorLocator(5))
         
 plt.show()
-
-
-# In[ ]:
-
-
-
-
