@@ -27,10 +27,17 @@ This repository includes information, code, scripts, and data to generate the fi
 
 ### Requirements
 
-* 
+* numpy
+* scipy
+* matplotlib
+* multiprocessing
+* numba
 
 ### Data Generation
-The main files to perform the algorithm detailed in the paper are described below. Generated data can be found in the **results** folder. The following files were designed to be ran on a computing cluster, and they may need to be modified to run on other systems.
+The main files to perform the algorithm detailed in the paper are given in folder **main_codes** and described below. Generated data can be found in the **results** folder. The following files were designed to be ran on a computing cluster, and they may need to be modified to run on other systems.
+
+* `multiorbital_bare_susceptibility.py` calculates all components of the static and dynamic transverse bare spin susceptibility tensor. The code consists of two options, using original Wannier90 tight-binding or a symmetrized Hamiltonian.
+* `multiorbital_RPA_susceptibility.ipynb` calculates RPA susceptibility tensor from the static bare susceptibility and generates the phase diagram from the leading energy eigenvalue.
 
 ### Figures
-All the codes used to create the figures in the paper are found in the **figures_scripts** folder. They are all written in Python (as jupyter notebooks and also as pure python code). Used libraries include matplotlib, numpy, scipy, csv and time.
+All the codes used to create the figures in the paper are found in the **figures_scripts** folder. They are all written in Python (as jupyter notebooks and also as pure python code) and Mathematica. Used libraries include matplotlib, numpy, scipy, csv and time.
