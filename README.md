@@ -24,4 +24,4 @@ The main files to perform the algorithm detailed in the paper are given in folde
 * `multiorbital_RPA_susceptibility.py` calculates the RPA susceptibility tensor from the static bare susceptibility and generates the phase diagram from the leading energy eigenvalue.
 
 ### Figures
-All the codes used to create the figures in the paper are found in the **figures_scripts** folder. They are all written in Python (as jupyter notebooks and also as pure python code) and Mathematica. Used libraries include matplotlib, numpy, scipy, csv and time.
+All the codes used to create the figures in the paper are found in the **figures_scripts** folder. They are all written in Python (as jupyter notebooks and also as pure python code) and Mathematica. Used libraries include matplotlib, numpy, scipy, csv and time. The partial generated data needed for generating figures is given in the folder **results**. The full data needed to generate the figures takes significant amount of storage and are available upon a request.	
