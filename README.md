@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/576204180.svg)](https://zenodo.org/badge/latestdoi/576204180)
+
 # Competing magnetic fluctuations and orders in a multiorbital model of doped SrCo2As2
 
 [Ana-Marija Nedić](https://amnedic.github.io), Morten H. Christensen, [Peter P. Orth](https://faculty.sites.iastate.edu/porth/)
