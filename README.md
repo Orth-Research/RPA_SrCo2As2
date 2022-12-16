@@ -1,4 +1,5 @@
-[![DOI](https://zenodo.org/badge/576204180.svg)](https://zenodo.org/badge/latestdoi/576204180)
+[![DOI](https://zenodo.org/badge/576204180.svg)](https://zenodo.org/badge/latestdoi/576204180) [![](https://img.shields.io/badge/paper-arXiv%3A2212.07511-B31B1B.svg)](https://arxiv.org/abs/2212.07511)
+
 
 # Competing magnetic fluctuations and orders in a multiorbital model of doped SrCo2As2
 
